@@ -45,8 +45,31 @@ public class Book {
 		System.out.println("Book Title: " + bookTitle + "\nBook ID: " + bookID
 							+ "\nTotal amount: " + amount + "\nAvailable: " + available);
 	}
-	
-	
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + bookID;
+		result = prime * result + ((bookTitle == null) ? 0 : bookTitle.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		if (bookID != other.bookID)
+			return false;
+		if (bookTitle == null) {
+			if (other.bookTitle != null)
+				return false;
+		} else if (!bookTitle.equals(other.bookTitle))
+			return false;
+		return true;
+	}
 	
 }
